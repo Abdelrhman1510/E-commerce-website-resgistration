@@ -20,7 +20,7 @@ export default function Register() {
      async function register(values){
       setIsLoading(true)
       seterrorMessage(null)
-      let {data}= await axios.post('https://route-ecommerce.onrender.com/api/v1/auth/signup',values).catch(
+      let {data}= await axios.post('https://route-ecommerce-app.vercel.app/v1/auth/signup',values).catch(
         (err)=>{
           setIsLoading(false)
           seterrorMessage(err.response.data.errors.msg)
@@ -31,6 +31,7 @@ export default function Register() {
       console.log(data)
       if(data.message=="success"){
         setIsLoading(false)
+        
         navigate("/login")
 
       }

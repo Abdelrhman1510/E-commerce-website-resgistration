@@ -5,7 +5,7 @@ import axios from 'axios'
 import { Formik, useFormik} from 'formik';
 import { useNavigate } from 'react-router-dom';
 import { useState } from 'react';
-export default function Login() {
+export default function Login(saveUser) {
   let navigate = useNavigate()
 
   
@@ -26,6 +26,8 @@ export default function Login() {
       console.log(data)
       if(data.message=="success"){
         setIsLoading(false)
+        localStorage.setItem("userToken",data.token)
+        saveUser();
         navigate("/")
 
       }
